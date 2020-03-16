@@ -4,8 +4,8 @@ interface Props {
     children: ReactNode
 }
 
-const createTestRouter = (initialRouterEntries: Array<string>) => {
-    const { MemoryRouter } = require('react-router');
+const createTestRouter = async (initialRouterEntries: Array<string>): Promise<FC<Props>> => {
+    const { MemoryRouter } = await import('react-router');
     const Router: FC<Props>  = (props: Props) => (
         <MemoryRouter initialEntries={ initialRouterEntries }>
             { props.children }
