@@ -1,11 +1,14 @@
 const config = {
     extends: [
-        'airbnb'
+        'airbnb',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended'
     ],
     plugins: [
-        'react-hooks'
+        'react-hooks',
+        '@typescript-eslint'
     ],
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     rules: {
         'no-tabs': 0,
         'react/jsx-indent': 0,
