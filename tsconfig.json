@@ -18,5 +18,11 @@
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    ".yalc",
+    ".idea"
   ]
 }
