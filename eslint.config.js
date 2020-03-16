@@ -30,7 +30,8 @@ const config = {
                 ignoreComments: true
             }
         ],
-        'implicit-arrow-linebreak': 0
+        'implicit-arrow-linebreak': 0,
+        "import/no-extraneous-dependencies": 0
     },
     globals: {
         window: true,

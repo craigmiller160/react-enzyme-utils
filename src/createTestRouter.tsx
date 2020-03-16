@@ -1,16 +1,19 @@
 import React, { FC, ReactNode } from 'react';
 
 interface Props {
-    children: ReactNode
+    children: ReactNode;
 }
 
 const createTestRouter = async (initialRouterEntries: Array<string>): Promise<FC<Props>> => {
     const { MemoryRouter } = await import('react-router');
-    const Router: FC<Props>  = (props: Props) => (
-        <MemoryRouter initialEntries={ initialRouterEntries }>
-            { props.children }
-        </MemoryRouter>
-    );
+    const Router: FC<Props> = (props: Props) => {
+        const { children } = props;
+        return (
+            <MemoryRouter initialEntries={ initialRouterEntries }>
+                { children }
+            </MemoryRouter>
+        );
+    };
     return Router;
 };
 
