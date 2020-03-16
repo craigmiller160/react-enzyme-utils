@@ -9,14 +9,14 @@ interface Props {
 }
 
 const createTestReduxProvider = (reduxState: object, useThunk: boolean):
-    [ReactNode, MockStoreEnhanced<typeof reduxState, any>] => {
+    [ReactNode, MockStoreEnhanced<typeof reduxState, object>] => {
     const middleware: Array<Middleware> = [];
     if (useThunk) {
         middleware.push(thunk);
     }
 
-    const mockStore: MockStoreCreator<typeof reduxState, any> = createMockStore(middleware);
-    const store: MockStoreEnhanced<typeof reduxState, any> = mockStore(reduxState);
+    const mockStore: MockStoreCreator<typeof reduxState, object> = createMockStore(middleware);
+    const store: MockStoreEnhanced<typeof reduxState, object> = mockStore(reduxState);
 
     const ReduxProvider: FC<Props> = (props: Props) => {
         const { children } = props;
