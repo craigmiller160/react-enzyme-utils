@@ -5,17 +5,18 @@ import thunk from 'redux-thunk';
 import { Middleware } from 'redux';
 
 interface Props {
-    children: ReactNode
+    children: ReactNode;
 }
 
-const createTestReduxProvider = (reduxState: object, useThunk: boolean): [ReactNode,MockStoreEnhanced<typeof reduxState,any>] => {
+const createTestReduxProvider = (reduxState: object, useThunk: boolean):
+    [ReactNode, MockStoreEnhanced<typeof reduxState, any>] => {
     const middleware: Array<Middleware> = [];
     if (useThunk) {
         middleware.push(thunk);
     }
 
-    const mockStore: MockStoreCreator<typeof reduxState,any> = createMockStore(middleware);
-    const store: MockStoreEnhanced<typeof reduxState,any> = mockStore(reduxState);
+    const mockStore: MockStoreCreator<typeof reduxState, any> = createMockStore(middleware);
+    const store: MockStoreEnhanced<typeof reduxState, any> = mockStore(reduxState);
 
     const ReduxProvider: FC<Props> = (props: Props) => {
         const { children } = props;

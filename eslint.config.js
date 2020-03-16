@@ -31,7 +31,8 @@ const config = {
             }
         ],
         'implicit-arrow-linebreak': 0,
-        "import/no-extraneous-dependencies": 0
+        "import/no-extraneous-dependencies": 0,
+        "@typescript-eslint/no-explicit-any": "error"
     },
     globals: {
         window: true,
