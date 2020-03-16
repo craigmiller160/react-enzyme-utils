@@ -1,11 +1,8 @@
-import React, { ReactNode, FC, Context } from 'react';
+import React, { FC, Context } from 'react';
+import PassThroughCompProps from './PassThroughCompProps';
 
-interface Props {
-    children: ReactNode;
-}
-
-const createTestContext = (ContextType: Context<object>, contextValue: object): FC<Props> => {
-    const TestContext: FC<Props> = (props: Props) => {
+const createTestContext = (ContextType: Context<object>, contextValue: object): FC<PassThroughCompProps> => {
+    const TestContext: FC<PassThroughCompProps> = (props: PassThroughCompProps) => {
         const { children } = props;
         return (
             <ContextType.Provider value={ contextValue }>

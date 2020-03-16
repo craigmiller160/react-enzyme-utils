@@ -1,12 +1,9 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { MemoryRouter } from 'react-router';
+import PassThroughCompProps from './PassThroughCompProps';
 
-interface Props {
-    children: ReactNode;
-}
-
-const createTestRouter = (initialRouterEntries: Array<string>): FC<Props> => {
-    const Router: FC<Props> = (props: Props) => {
+const createTestRouter = (initialRouterEntries: Array<string>): FC<PassThroughCompProps> => {
+    const Router: FC<PassThroughCompProps> = (props: PassThroughCompProps) => {
         const { children } = props;
         return (
             <MemoryRouter initialEntries={ initialRouterEntries }>
