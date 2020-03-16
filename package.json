@@ -1,7 +1,6 @@
 {
   "name": "react-enzyme-utils",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Craig Miller <craigmiller160@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -9,5 +8,7 @@
   },
   "files": [
     "./lib"
-  ]
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts"
 }
