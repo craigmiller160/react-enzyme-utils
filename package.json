@@ -4,6 +4,7 @@
   "author": "Craig Miller <craigmiller160@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "eslint": "eslint -c eslint.config.js ./src/**/*"
   },
   "files": [
