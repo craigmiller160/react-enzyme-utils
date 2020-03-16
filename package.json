@@ -14,7 +14,9 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@types/react": "^16.9.23",
+    "@types/react-redux": "^7.1.7",
     "@types/react-router": "^5.1.4",
+    "@types/redux-mock-store": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
     "eslint": "^6.8.0",
@@ -24,7 +26,10 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "react": "^16.13.0",
+    "react-redux": "^7.2.0",
     "react-router": "^5.1.2",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.3.0",
     "typescript": "^3.8.3"
   }
 }
