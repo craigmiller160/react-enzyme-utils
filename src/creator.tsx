@@ -1,38 +1,10 @@
-import React, { Context, FC, ComponentType } from 'react';
+import React, { FC, ComponentType } from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { MockStoreEnhanced } from 'redux-mock-store';
 import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
-
-interface CreatorArgs<Props, State, Ctx> {
-    component: ComponentType<Props>;
-    props?: Props;
-    redux?: {
-        state: State;
-        useThunk?: boolean;
-    };
-    context?: {
-        type: Context<Ctx>;
-        value: Ctx;
-    };
-    router?: {
-        initialRouterEntries: [string];
-    };
-}
-
-interface MounterArgs<Props, State, Ctx> {
-    props?: Props;
-    reduxState?: State;
-    initialRouterEntries?: [string];
-    contextValue?: Ctx;
-}
-
-interface Mounter<Props, State> {
-    component: ReactWrapper<Props, object>;
-    store?: MockStoreEnhanced<State, object>;
-}
 
 function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
     return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props, State> {
