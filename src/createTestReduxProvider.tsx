@@ -23,7 +23,7 @@ const createTestReduxProvider = (reduxState: object, useThunk: boolean): // TODO
         );
     };
 
-    return [ReduxProvider, store];
+    return [ ReduxProvider, store ];
 };
 
 export default createTestReduxProvider;

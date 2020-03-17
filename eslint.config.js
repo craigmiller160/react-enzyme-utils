@@ -36,7 +36,8 @@ const config = {
         'implicit-arrow-linebreak': 0,
         "import/no-extraneous-dependencies": 0,
         '@typescript-eslint/no-explicit-any': 'error',
-        'import/extensions': ['error', 'never']
+        'import/extensions': ['error', 'never'],
+        'array-bracket-spacing': ['error', 'always']
     },
     globals: {
         window: true,

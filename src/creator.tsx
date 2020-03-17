@@ -38,9 +38,7 @@ const creator = (creatorArgs: CreatorArgs) => (mounterArgs: MounterArgs): Mounte
     let store: object = {}; // TODO need generic type here
     if (creatorArgs.redux) {
         const storeState = mounterArgs.reduxState || creatorArgs.redux.state;
-        const providerAndStore = createTestReduxProvider(storeState || {}, creatorArgs.redux.useThunk || false);
-        TestReduxProvider = providerAndStore[0];
-        store = providerAndStore[1];
+        [ TestReduxProvider, store ] = createTestReduxProvider(storeState || {}, creatorArgs.redux.useThunk || false);
     }
 
     let TestRouter: FC<PassThroughCompProps> = createDefaultComp();
