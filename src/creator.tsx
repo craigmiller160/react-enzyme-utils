@@ -1,14 +1,12 @@
-import React, { Context, FC, Component, ReactNode } from 'react';
+import React, { Context, FC, ComponentType } from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import PassThroughCompProps from './PassThroughCompProps';
 import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 
-type AnyComponent<Props,State> = FC<Props> | Component<Props,State>;
-
 interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
-    component: AnyComponent<Props, object>; // TODO do I care about the state type?
+    component: ComponentType<Props>
     props?: Props;
     redux?: {
         state: State;
@@ -67,7 +65,7 @@ const creator = (creatorArgs: CreatorArgs) => (mounterArgs: MounterArgs): Mounte
     }
 
     const props = mounterArgs.props || creatorArgs.props || {};
-    const TheComponent: AnyComponent<any, any> = creatorArgs.component; // TODO what is the type for this?
+    const TheComponent: ComponentType<object> = creatorArgs.component; // TODO what is the type for the props?
 
     const component: ReactWrapper<object,object> = mount( // TODO need generic types
         <TestRouter>
