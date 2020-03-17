@@ -3,6 +3,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
+import createDefaultComp from './createDefaultComp';
 
 interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
     component: ComponentType<Props>;
@@ -26,15 +27,6 @@ interface MounterArgs<Props = {}, State = {}, Ctx = {}> {
     initialRouterEntries?: [string];
     contextValue?: Ctx;
 }
-// TODO move this to separate file
-const createDefaultComp = (): FC<PassThroughCompProps> => (props: PassThroughCompProps): JSX.Element => {
-    const { children } = props;
-    return (
-        <div>
-            { children }
-        </div>
-    );
-};
 
 interface Mounter {
     component: ReactWrapper<object, object>; // TODO need better type
