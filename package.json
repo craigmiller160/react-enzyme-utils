@@ -1,6 +1,6 @@
 {
   "name": "react-enzyme-utils",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "author": "Craig Miller <craigmiller160@gmail.com>",
   "license": "MIT",
   "scripts": {
