@@ -1,3 +1,3 @@
-import enzymeCreator from './creator';
+import enzymeCreator from './parts/creator';
 
 export default enzymeCreator;
