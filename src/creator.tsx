@@ -6,7 +6,7 @@ import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
 
-interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
+interface CreatorArgs<Props, State, Ctx> {
     component: ComponentType<Props>;
     props?: Props;
     redux?: {
@@ -22,20 +22,20 @@ interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
     };
 }
 
-interface MounterArgs<Props = {}, State = {}, Ctx = {}> {
+interface MounterArgs<Props, State, Ctx> {
     props?: Props;
     reduxState?: State;
     initialRouterEntries?: [string];
     contextValue?: Ctx;
 }
 
-interface Mounter<Props = {}, State = {}> {
+interface Mounter<Props, State> {
     component: ReactWrapper<Props, object>;
     store?: MockStoreEnhanced<State, object>;
 }
 
-function creator<Props = {}, State = {}, Ctx = {}>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
-    return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props> {
+function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
+    return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props, State> {
         let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
         let store: MockStoreEnhanced<State, object> | undefined;
         if (creatorArgs.redux) {
