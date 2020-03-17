@@ -19,7 +19,7 @@ function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>)
 
         let TestRouter: FC<PassThroughCompProps> = createDefaultComp();
         if (creatorArgs.router) {
-            const initialEntries = mounterArgs.initialRouterEntries || creatorArgs.router.initialRouterEntries;
+            const initialEntries = mounterArgs.initialRouterEntries || creatorArgs.router.initialEntries;
             TestRouter = createTestRouter(initialEntries || []);
         }
 

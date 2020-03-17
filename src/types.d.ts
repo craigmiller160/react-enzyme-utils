@@ -19,7 +19,7 @@ declare global {
             value: Ctx;
         };
         router?: {
-            initialRouterEntries: [string]; // TODO rename to initialEntries
+            initialEntries: [string];
         };
     }
 
