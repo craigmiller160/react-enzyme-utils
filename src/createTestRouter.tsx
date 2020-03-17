@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { MemoryRouter } from 'react-router';
-import PassThroughCompProps from './PassThroughCompProps';
 
 const createTestRouter = (initialRouterEntries: Array<string>): FC<PassThroughCompProps> => {
     const Router: FC<PassThroughCompProps> = (props: PassThroughCompProps) => {

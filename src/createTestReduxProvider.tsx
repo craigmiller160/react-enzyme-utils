@@ -3,7 +3,6 @@ import createMockStore, { MockStoreCreator, MockStoreEnhanced } from 'redux-mock
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { Middleware } from 'redux';
-import PassThroughCompProps from './PassThroughCompProps';
 
 const createTestReduxProvider = (reduxState: object, useThunk: boolean): // TODO need generic type
     [FC<PassThroughCompProps>, MockStoreEnhanced<typeof reduxState, object>] => {

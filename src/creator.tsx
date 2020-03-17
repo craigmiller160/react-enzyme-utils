@@ -1,6 +1,5 @@
 import React, { Context, FC, ComponentType } from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import PassThroughCompProps from './PassThroughCompProps';
 import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
