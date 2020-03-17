@@ -14,12 +14,12 @@ declare global {
             state: State;
             useThunk?: boolean;
         };
-        context?: {
+        context?: { // TODO make into an array
             type: Context<Ctx>;
             value: Ctx;
         };
         router?: {
-            initialRouterEntries: [string];
+            initialRouterEntries: [string]; // TODO rename to initialEntries
         };
     }
 
@@ -27,7 +27,7 @@ declare global {
         props?: Props;
         reduxState?: State;
         initialRouterEntries?: [string];
-        contextValue?: Ctx;
+        contextValue?: Ctx; // TODO make into an array... or an object with special keys? support multiple contexts
     }
 
     interface Mounter<Props, State> {

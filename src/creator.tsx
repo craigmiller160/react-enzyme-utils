@@ -6,6 +6,8 @@ import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
 
+// TODO add an additional function that can be chained that resolves initialization promises
+
 function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
     return function mounter(mounterArgs: MounterArgs<Props, State, Ctx> = {}): Mounter<Props, State> {
         let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
