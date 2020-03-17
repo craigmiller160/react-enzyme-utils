@@ -1,6 +1,4 @@
 import { ComponentType, Context, ReactNode } from 'react';
-import { ReactWrapper } from 'enzyme';
-import { MockStoreEnhanced } from 'redux-mock-store';
 
 declare global {
     interface PassThroughCompProps {
