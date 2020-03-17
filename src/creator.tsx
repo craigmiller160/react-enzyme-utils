@@ -56,9 +56,9 @@ function creator<Props = {}, State = {}, Ctx = {}>(creatorArgs: CreatorArgs<Prop
         }
 
         const props: Props | {} = mounterArgs.props || creatorArgs.props || {};
-        const TheComponent: ComponentType<Props | {}> = creatorArgs.component; // TODO what is the type for the props?
+        const TheComponent: ComponentType<Props | {}> = creatorArgs.component;
 
-        const component: ReactWrapper<Props, object> = mount( // TODO need generic types
+        const component: ReactWrapper<Props, object> = mount(
             <TestRouter>
                 <TestReduxProvider>
                     <TestContext>
