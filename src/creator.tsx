@@ -7,7 +7,7 @@ import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
 
 function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
-    return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props, State> {
+    return function mounter(mounterArgs: MounterArgs<Props, State, Ctx> = {}): Mounter<Props, State> {
         let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
         let store: MockStoreEnhanced<State, object> | undefined;
         if (creatorArgs.redux) {
