@@ -29,9 +29,4 @@ declare global {
         initialRouterEntries?: [string];
         contextValue?: Ctx; // TODO make into an array... or an object with special keys? support multiple contexts
     }
-
-    interface Mounter<Props, State> {
-        component: ReactWrapper<Props, object>;
-        store?: MockStoreEnhanced<State, object>;
-    }
 }

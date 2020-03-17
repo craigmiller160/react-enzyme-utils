@@ -5,6 +5,7 @@ import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
+import Mounter from './Mounter';
 
 // TODO add an additional function that can be chained that resolves initialization promises
 
@@ -42,10 +43,7 @@ function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>)
             </TestRouter>
         );
 
-        return {
-            component,
-            store
-        };
+        return new Mounter(component, store);
     };
 }
 
