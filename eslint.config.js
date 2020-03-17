@@ -8,6 +8,9 @@ const config = {
         'react-hooks',
         '@typescript-eslint'
     ],
+    parserOptions: {
+        project: './tsconfig.json'
+    },
     parser: '@typescript-eslint/parser',
     rules: {
         'no-tabs': 0,
@@ -32,7 +35,8 @@ const config = {
         ],
         'implicit-arrow-linebreak': 0,
         "import/no-extraneous-dependencies": 0,
-        "@typescript-eslint/no-explicit-any": "error"
+        '@typescript-eslint/no-explicit-any': 'error',
+        'import/extensions': ['error', 'never']
     },
     globals: {
         window: true,
@@ -44,6 +48,14 @@ const config = {
         fetch: true,
         customElements: true,
         HTMLElement: true
+    },
+    settings: {
+        'import/resolver': {
+            node: {
+                extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                moduleDirectory: ['node_modules', 'src']
+            }
+        }
     }
 };
 
