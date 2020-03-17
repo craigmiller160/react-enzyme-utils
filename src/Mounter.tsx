@@ -9,6 +9,7 @@ class Mounter<Props,State> {
         public store?: MockStoreEnhanced<State, object>
     ) { }
 
+    // TODO in docs point out how this can be used more than once. Look at UserManagementPage.Spec for example
     async resolve(): Promise<Mounter<Props, State>> {
         await resolver(this.component);
         return this;
