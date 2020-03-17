@@ -4,6 +4,7 @@ import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
+import { MockStoreEnhanced } from 'redux-mock-store';
 
 interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
     component: ComponentType<Props>;
@@ -28,48 +29,50 @@ interface MounterArgs<Props = {}, State = {}, Ctx = {}> {
     contextValue?: Ctx;
 }
 
-interface Mounter {
-    component: ReactWrapper<object, object>; // TODO need better type
-    store: object; // TODO need generic type
+interface Mounter<Props = {}, State = {}> {
+    component: ReactWrapper<Props, object>;
+    store: MockStoreEnhanced<State, object>;
 }
 
-const creator = (creatorArgs: CreatorArgs) => (mounterArgs: MounterArgs): Mounter => {
-    let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
-    let store: object = {}; // TODO need generic type here
-    if (creatorArgs.redux) {
-        const storeState = mounterArgs.reduxState || creatorArgs.redux.state;
-        [ TestReduxProvider, store ] = createTestReduxProvider(storeState || {}, creatorArgs.redux.useThunk || false);
+function creator<Props = {}, State = {}, Ctx = {}>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
+    return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props> {
+        let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
+        let store: MockStoreEnhanced<State, object>;
+        if (creatorArgs.redux) {
+            const storeState = mounterArgs.reduxState || creatorArgs.redux.state;
+            [ TestReduxProvider, store ] = createTestReduxProvider(storeState, creatorArgs.redux.useThunk || false);
+        }
+
+        let TestRouter: FC<PassThroughCompProps> = createDefaultComp();
+        if (creatorArgs.router) {
+            const initialEntries = mounterArgs.initialRouterEntries || creatorArgs.router.initialRouterEntries;
+            TestRouter = createTestRouter(initialEntries || []);
+        }
+
+        let TestContext: FC<PassThroughCompProps> = createDefaultComp();
+        if (creatorArgs.context) {
+            const value = mounterArgs.contextValue || creatorArgs.context.value;
+            TestContext = createTestContext(creatorArgs.context.type, value);
+        }
+
+        const props: Props | {} = mounterArgs.props || creatorArgs.props || {};
+        const TheComponent: ComponentType<Props | {}> = creatorArgs.component; // TODO what is the type for the props?
+
+        const component: ReactWrapper<Props, object> = mount( // TODO need generic types
+            <TestRouter>
+                <TestReduxProvider>
+                    <TestContext>
+                        <TheComponent { ...props } />
+                    </TestContext>
+                </TestReduxProvider>
+            </TestRouter>
+        );
+
+        return {
+            component,
+            store
+        };
     }
-
-    let TestRouter: FC<PassThroughCompProps> = createDefaultComp();
-    if (creatorArgs.router) {
-        const initialEntries = mounterArgs.initialRouterEntries || creatorArgs.router.initialRouterEntries;
-        TestRouter = createTestRouter(initialEntries || []);
-    }
-
-    let TestContext: FC<PassThroughCompProps> = createDefaultComp();
-    if (creatorArgs.context) {
-        const value = mounterArgs.contextValue || creatorArgs.context.value;
-        TestContext = createTestContext(creatorArgs.context.type, value);
-    }
-
-    const props = mounterArgs.props || creatorArgs.props || {};
-    const TheComponent: ComponentType<object> = creatorArgs.component; // TODO what is the type for the props?
-
-    const component: ReactWrapper<object, object> = mount( // TODO need generic types
-        <TestRouter>
-            <TestReduxProvider>
-                <TestContext>
-                    <TheComponent { ...props } />
-                </TestContext>
-            </TestReduxProvider>
-        </TestRouter>
-    );
-
-    return {
-        component,
-        store
-    };
-};
+}
 
 export default creator;
