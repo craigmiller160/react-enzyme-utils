@@ -1,12 +1,12 @@
+import { ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
-const resolve = async (mounter: Mounter<any, any>): Promise<Mounter<any, any>> => { // TODO figure out better type parameters
+const resolve = async (component: ReactWrapper<object, object>) => { // TODO figure out better type parameters
     await act(async () => {
-        await Promise.resolve(mounter.component);
+        await Promise.resolve(component);
         await new Promise((resolve) => setImmediate(resolve));
-        mounter.component.update();
+        component.update();
     });
-    return mounter;
 };
 
 export default resolve;
