@@ -5,19 +5,19 @@ import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 
 interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
-    component: ComponentType<Props>
+    component: ComponentType<Props>;
     props?: Props;
     redux?: {
         state: State;
         useThunk?: boolean;
-    }
+    };
     context?: {
         type: Context<Ctx>;
         value: Ctx;
-    }
+    };
     router?: {
-        initialRouterEntries: [string]
-    }
+        initialRouterEntries: [string];
+    };
 }
 
 interface MounterArgs<Props = {}, State = {}, Ctx = {}> {
@@ -26,8 +26,8 @@ interface MounterArgs<Props = {}, State = {}, Ctx = {}> {
     initialRouterEntries?: [string];
     contextValue?: Ctx;
 }
-
-const createDefaultComp = (): FC<PassThroughCompProps> => (props: PassThroughCompProps) => {
+// TODO move this to separate file
+const createDefaultComp = (): FC<PassThroughCompProps> => (props: PassThroughCompProps): JSX.Element => {
     const { children } = props;
     return (
         <div>
@@ -37,7 +37,7 @@ const createDefaultComp = (): FC<PassThroughCompProps> => (props: PassThroughCom
 };
 
 interface Mounter {
-    component: ReactWrapper<object,object>; // TODO need better type
+    component: ReactWrapper<object, object>; // TODO need better type
     store: object; // TODO need generic type
 }
 
@@ -66,7 +66,7 @@ const creator = (creatorArgs: CreatorArgs) => (mounterArgs: MounterArgs): Mounte
     const props = mounterArgs.props || creatorArgs.props || {};
     const TheComponent: ComponentType<object> = creatorArgs.component; // TODO what is the type for the props?
 
-    const component: ReactWrapper<object,object> = mount( // TODO need generic types
+    const component: ReactWrapper<object, object> = mount( // TODO need generic types
         <TestRouter>
             <TestReduxProvider>
                 <TestContext>
