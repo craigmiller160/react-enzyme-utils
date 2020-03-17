@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { Middleware } from 'redux';
 
-function createTestReduxProvider<State = {}>(reduxState: State, useThunk: boolean): [FC<PassThroughCompProps>, MockStoreEnhanced<State, object>] {
+function createTestReduxProvider<State = {}>(reduxState: State, useThunk: boolean):
+    [FC<PassThroughCompProps>, MockStoreEnhanced<State, object>] {
     const middleware: Array<Middleware> = [];
     if (useThunk) {
         middleware.push(thunk);

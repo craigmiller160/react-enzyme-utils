@@ -1,10 +1,10 @@
 import React, { Context, FC, ComponentType } from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import { MockStoreEnhanced } from 'redux-mock-store';
 import createTestReduxProvider from './createTestReduxProvider';
 import createTestRouter from './createTestRouter';
 import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
-import { MockStoreEnhanced } from 'redux-mock-store';
 
 interface CreatorArgs<Props = {}, State = {}, Ctx = {}> {
     component: ComponentType<Props>;
@@ -37,7 +37,7 @@ interface Mounter<Props = {}, State = {}> {
 function creator<Props = {}, State = {}, Ctx = {}>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
     return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props> {
         let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
-        let store: MockStoreEnhanced<State, object> | undefined = undefined;
+        let store: MockStoreEnhanced<State, object> | undefined;
         if (creatorArgs.redux) {
             const storeState = mounterArgs.reduxState || creatorArgs.redux.state;
             [ TestReduxProvider, store ] = createTestReduxProvider(storeState, creatorArgs.redux.useThunk || false);
@@ -72,7 +72,7 @@ function creator<Props = {}, State = {}, Ctx = {}>(creatorArgs: CreatorArgs<Prop
             component,
             store
         };
-    }
+    };
 }
 
 export default creator;
