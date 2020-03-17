@@ -7,7 +7,7 @@ import createTestContext from './createTestContext';
 import createDefaultComp from './createDefaultComp';
 import Mounter from './Mounter';
 
-// TODO add an additional function that can be chained that resolves initialization promises
+// TODO come up with better names for everything
 
 function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
     return function mounter(mounterArgs: MounterArgs<Props, State, Ctx> = {}): Mounter<Props, State> {
