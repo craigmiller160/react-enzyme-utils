@@ -32,7 +32,7 @@ function creator<Props, State, Ctx>(creatorArgs: CreatorArgs<Props, State, Ctx>)
         const props: Props | {} = mounterArgs.props || creatorArgs.props || {};
         const TheComponent: ComponentType<Props | {}> = creatorArgs.component;
 
-        const component: ReactWrapper<Props, object> = mount(
+        const component: ReactWrapper<Props, object> = mount( // TODO rename to wrapper
             <TestRouter>
                 <TestReduxProvider>
                     <TestContext>
