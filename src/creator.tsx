@@ -31,13 +31,13 @@ interface MounterArgs<Props = {}, State = {}, Ctx = {}> {
 
 interface Mounter<Props = {}, State = {}> {
     component: ReactWrapper<Props, object>;
-    store: MockStoreEnhanced<State, object>;
+    store?: MockStoreEnhanced<State, object>;
 }
 
 function creator<Props = {}, State = {}, Ctx = {}>(creatorArgs: CreatorArgs<Props, State, Ctx>) {
     return function mounter(mounterArgs: MounterArgs<Props, State, Ctx>): Mounter<Props> {
         let TestReduxProvider: FC<PassThroughCompProps> = createDefaultComp();
-        let store: MockStoreEnhanced<State, object>;
+        let store: MockStoreEnhanced<State, object> | undefined = undefined;
         if (creatorArgs.redux) {
             const storeState = mounterArgs.reduxState || creatorArgs.redux.state;
             [ TestReduxProvider, store ] = createTestReduxProvider(storeState, creatorArgs.redux.useThunk || false);
