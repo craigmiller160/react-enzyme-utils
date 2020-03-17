@@ -1,6 +1,6 @@
 import { ReactWrapper } from 'enzyme';
 import { MockStoreEnhanced } from 'redux-mock-store';
-import { act } from 'react-dom/test-utils';
+import resolver from './resolver';
 
 class Mounter<Props,State> {
 
@@ -10,11 +10,7 @@ class Mounter<Props,State> {
     ) { }
 
     async resolve(): Promise<Mounter<Props, State>> {
-        await act(async () => {
-            await Promise.resolve(this.component);
-            await new Promise((resolve) => setImmediate(resolve));
-            this.component.update();
-        });
+        await resolver(this.component);
         return this;
     }
 
