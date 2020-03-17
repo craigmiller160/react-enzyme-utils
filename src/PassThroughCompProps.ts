@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
-export default interface PassThroughCompProps {
+interface PassThroughCompProps {
     children: ReactNode;
 }
+
+export default PassThroughCompProps;

@@ -1,5 +1,4 @@
 import React, { FC, Context } from 'react';
-import PassThroughCompProps from './PassThroughCompProps';
 
 const createTestContext = (ContextType: Context<object>, contextValue: object): FC<PassThroughCompProps> => {
     const TestContext: FC<PassThroughCompProps> = (props: PassThroughCompProps) => {
