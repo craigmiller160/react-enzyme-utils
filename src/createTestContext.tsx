@@ -1,6 +1,6 @@
 import React, { FC, Context } from 'react';
 
-const createTestContext = (ContextType: Context<object>, contextValue: object): FC<PassThroughCompProps> => {
+function createTestContext<Ctx = {}>(ContextType: Context<Ctx>, contextValue: Ctx): FC<PassThroughCompProps> {
     const TestContext: FC<PassThroughCompProps> = (props: PassThroughCompProps) => {
         const { children } = props;
         return (
@@ -10,6 +10,6 @@ const createTestContext = (ContextType: Context<object>, contextValue: object): 
         );
     };
     return TestContext;
-};
+}
 
 export default createTestContext;
