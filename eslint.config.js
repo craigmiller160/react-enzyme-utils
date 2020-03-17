@@ -37,7 +37,9 @@ const config = {
         "import/no-extraneous-dependencies": 0,
         '@typescript-eslint/no-explicit-any': 'error',
         'import/extensions': ['error', 'never'],
-        'array-bracket-spacing': ['error', 'always']
+        'array-bracket-spacing': ['error', 'always'],
+        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/explicit-function-return-type': 'error'
     },
     globals: {
         window: true,
